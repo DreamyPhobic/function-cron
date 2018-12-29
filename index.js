@@ -24,14 +24,3 @@ exports.hourly_job = functions.pubsub
 
     return true;
   });
-exports.daily_job = functions.pubsub
-  .topic('daily-tick')
-  .onPublish((message) => {
-    console.log("This job is run every day!");
-    if (message.data) {
-      const dataString = Buffer.from(message.data, 'base64').toString();
-      console.log(`Message Data: ${dataString}`);
-    }
-
-    return true;
-  });
